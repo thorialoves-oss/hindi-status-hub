@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hindi Status Hub</title>
+<style>
+body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
+header{background:linear-gradient(135deg,#7b2ff7,#f107a3);color:white;text-align:center;padding:30px 15px}
+h1{margin:0;font-size:32px}
+nav{background:white;padding:12px;text-align:center}
+button{border:0;border-radius:20px;padding:10px 15px;margin:4px;background:#7b2ff7;color:white}
+main{max-width:900px;margin:auto;padding:20px}
+.card{background:white;padding:20px;margin:15px 0;border-radius:15px;box-shadow:0 3px 10px #0002}
+.quote{font-size:20px;line-height:1.6}
+.copy{background:#eee;color:#222}
+footer{text-align:center;background:#222;color:white;padding:20px}
+</style>
+</head>
+<body>
 
+<header>
+<h1>Hindi Status Hub ❤️</h1>
+<p>शायरी और स्टेटस का अपना प्लेटफॉर्म</p>
+</header>
+
+<nav>
+<button onclick="show('all')">सभी</button>
+<button onclick="show('love')">❤️ Love</button>
+<button onclick="show('attitude')">😎 Attitude</button>
+<button onclick="show('motivation')">💪 Motivation</button>
+</nav>
+
+<main id="content"></main>
+
+<footer>© 2026 Hindi Status Hub</footer>
+
+<script>
+const data=[
+["love","मोहब्बत वही है जो दूर रहकर भी दिल के सबसे करीब रहे। ❤️"],
+["love","तेरी मुस्कान मेरी पसंदीदा वजह है मुस्कुराने की। ❤️"],
+["attitude","अपना अंदाज़ अलग है, इसलिए पहचान भी अलग है। 😎"],
+["attitude","खामोशी हमारी कमजोरी नहीं, हमारा अंदाज़ है। 🔥"],
+["motivation","आज की मेहनत ही कल की सफलता बनेगी। 💪"],
+["motivation","सपने बड़े रखो और मेहनत उससे भी बड़ी। 🌟"]
+];
+
+function show(type){
+let list=data.filter(x=>type==="all"||x[0]===type);
+document.getElementById("content").innerHTML=list.map(x=>`
+<div class="card">
+<div class="quote">${x[1]}</div>
+<br>
+<button class="copy" onclick="copyText('${x[1].replace(/'/g,"\\'")}')">📋 Copy</button>
+</div>`).join("");
+}
+
+function copyText(text){
+navigator.clipboard.writeText(text);
+alert("शायरी कॉपी हो गई!");
+}
+
+show("all");
+</script>
+
+</body>
+</html>
