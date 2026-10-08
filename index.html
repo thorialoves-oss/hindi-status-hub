@@ -3,20 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hindi Status Hub</title>
+
+<title>Hindi Status Hub | Shayari & Status</title>
+
+<meta name="description"
+content="Hindi Shayari, Love Status, Attitude Status, Motivation, Birthday और Good Morning Status.">
+
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
-header{background:linear-gradient(135deg,#7b2ff7,#f107a3);color:white;text-align:center;padding:30px 15px}
-h1{margin:0;font-size:32px}
-nav{background:white;padding:12px;text-align:center}
-button{border:0;border-radius:20px;padding:10px 15px;margin:4px;background:#7b2ff7;color:white}
-main{max-width:900px;margin:auto;padding:20px}
-.card{background:white;padding:20px;margin:15px 0;border-radius:15px;box-shadow:0 3px 10px #0002}
-.quote{font-size:20px;line-height:1.6}
-.copy{background:#eee;color:#222}
-footer{text-align:center;background:#222;color:white;padding:20px}
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+color:#222;
+}
+
+header{
+background:linear-gradient(135deg,#7b2ff7,#f107a3);
+color:white;
+text-align:center;
+padding:35px 15px;
+}
+
+header h1{
+margin:0;
+font-size:34px;
+}
+
+header p{
+font-size:18px;
+margin-top:12px;
+}
+
+.search{
+padding:18px;
+background:white;
+text-align:center;
+}
+
+.search input{
+width:90%;
+max-width:600px;
+padding:14px 18px;
+border:1px solid #ddd;
+border-radius:30px;
+font-size:16px;
+outline:none;
+}
+
+nav{
+background:white;
+padding:12px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 2px 8px #0001;
+}
+
+button{
+border:0;
+border-radius:25px;
+padding:11px 16px;
+margin:4px;
+background:#7b2ff7;
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+main{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:22px;
+margin:16px 0;
+border-radius:18px;
+box-shadow:0 4px 15px #0002;
+}
+
+.quote{
+font-size:21px;
+line-height:1.7;
+}
+
+.actions{
+margin-top:15px;
+}
+
+.copy{
+background:#eee;
+color:#222;
+}
+
+.share{
+background:#25D366;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:30px;
+}
+
+.empty{
+text-align:center;
+padding:30px;
+font-size:18px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -24,43 +128,152 @@ footer{text-align:center;background:#222;color:white;padding:20px}
 <p>शायरी और स्टेटस का अपना प्लेटफॉर्म</p>
 </header>
 
+<div class="search">
+<input
+type="text"
+id="search"
+placeholder="🔎 शायरी या स्टेटस खोजें..."
+oninput="searchStatus()">
+</div>
+
 <nav>
 <button onclick="show('all')">सभी</button>
 <button onclick="show('love')">❤️ Love</button>
 <button onclick="show('attitude')">😎 Attitude</button>
 <button onclick="show('motivation')">💪 Motivation</button>
+<button onclick="show('morning')">🌅 Good Morning</button>
+<button onclick="show('night')">🌙 Good Night</button>
+<button onclick="show('birthday')">🎂 Birthday</button>
 </nav>
 
 <main id="content"></main>
 
-<footer>© 2026 Hindi Status Hub</footer>
+<footer>
+© 2026 Hindi Status Hub ❤️
+<br>
+शायरी और स्टेटस के लिए हमारी वेबसाइट पर आएँ
+</footer>
 
 <script>
+
 const data=[
+
 ["love","मोहब्बत वही है जो दूर रहकर भी दिल के सबसे करीब रहे। ❤️"],
+
 ["love","तेरी मुस्कान मेरी पसंदीदा वजह है मुस्कुराने की। ❤️"],
+
+["love","कुछ रिश्ते दिल से जुड़े होते हैं, दूरी से नहीं। ❤️"],
+
 ["attitude","अपना अंदाज़ अलग है, इसलिए पहचान भी अलग है। 😎"],
+
 ["attitude","खामोशी हमारी कमजोरी नहीं, हमारा अंदाज़ है। 🔥"],
+
+["attitude","जो हमें समझ नहीं पाए, उन्हें समझाने की जरूरत नहीं। 😎"],
+
 ["motivation","आज की मेहनत ही कल की सफलता बनेगी। 💪"],
-["motivation","सपने बड़े रखो और मेहनत उससे भी बड़ी। 🌟"]
+
+["motivation","सपने बड़े रखो और मेहनत उससे भी बड़ी। 🌟"],
+
+["motivation","हार मत मानो, शुरुआत हमेशा छोटी होती है। 💪"],
+
+["morning","नई सुबह नई उम्मीद लेकर आती है। सुप्रभात! 🌅"],
+
+["morning","आपका आज का दिन खुशियों से भरा रहे। Good Morning! ☀️"],
+
+["night","दिन चाहे जैसा भी रहा हो, कल एक नई शुरुआत है। शुभ रात्रि! 🌙"],
+
+["night","मीठे सपनों के साथ रात को अलविदा कहिए। शुभ रात्रि! 🌙"],
+
+["birthday","जन्मदिन की ढेर सारी शुभकामनाएँ! आपका हर सपना पूरा हो। 🎂🎉"],
+
+["birthday","आपका नया साल खुशियों और सफलता से भरा रहे। Happy Birthday! 🎂❤️"]
+
 ];
 
 function show(type){
-let list=data.filter(x=>type==="all"||x[0]===type);
-document.getElementById("content").innerHTML=list.map(x=>`
-<div class="card">
-<div class="quote">${x[1]}</div>
-<br>
-<button class="copy" onclick="copyText('${x[1].replace(/'/g,"\\'")}')">📋 Copy</button>
-</div>`).join("");
+
+let list=data.filter(x=>type==="all" || x[0]===type);
+
+display(list);
+
 }
 
-function copyText(text){
+function display(list){
+
+if(list.length===0){
+
+document.getElementById("content").innerHTML=
+'<div class="empty">😔 कोई स्टेटस नहीं मिला।</div>';
+
+return;
+
+}
+
+document.getElementById("content").innerHTML=list.map((x,index)=>`
+
+<div class="card">
+
+<div class="quote">${x[1]}</div>
+
+<div class="actions">
+
+<button class="copy"
+onclick="copyText(${index}, '${x[1].replace(/'/g,"\\'")}')">
+📋 Copy
+</button>
+
+<button class="share"
+onclick="shareText('${x[1].replace(/'/g,"\\'")}')">
+📤 Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function copyText(index,text){
+
 navigator.clipboard.writeText(text);
-alert("शायरी कॉपी हो गई!");
+
+alert("✅ स्टेटस कॉपी हो गया!");
+
+}
+
+function shareText(text){
+
+if(navigator.share){
+
+navigator.share({
+title:"Hindi Status Hub",
+text:text
+});
+
+}else{
+
+navigator.clipboard.writeText(text);
+
+alert("✅ स्टेटस कॉपी हो गया। अब WhatsApp पर शेयर करें!");
+
+}
+
+}
+
+function searchStatus(){
+
+let q=document.getElementById("search").value.toLowerCase();
+
+let list=data.filter(x=>x[1].toLowerCase().includes(q));
+
+display(list);
+
 }
 
 show("all");
+
 </script>
 
 </body>
